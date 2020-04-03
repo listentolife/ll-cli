@@ -12,7 +12,9 @@ module.exports = async (projectName) => {
   // 筛选初始化仓库列表
   repos = repos.filter(item => item.name.includes('init-template'))
   repos = repos.map(item => item.name)
+  if (repos.length === 0) return
   // 选择仓库
+  console.log('\n')
   let { repo } = await Inquirer.prompt({
     name: 'repo',
     type: 'list',
@@ -26,6 +28,7 @@ module.exports = async (projectName) => {
   let tag = ''
   if (tags.length > 1) {
     tags = tags.map(item => item.name)
+    console.log('\n')
     tagData = await Inquirer.prompt({
       name: 'tag',
       type: 'list',
@@ -38,12 +41,15 @@ module.exports = async (projectName) => {
   }
 
   // 下载模板
+  console.log('\n')
   let template = await waitFnLoading(download, 'download template...')(repo, tag)
 
-  if (!fs.existsSync(path.join(result, 'ask.js'))) {
+  if (!fs.existsSync(path.join(template, 'ask.js'))) {
     // 没有ask.js，只要复制到目录下即可
     await ncp(template, path.resolve(projectName))
+    console.log('\ncreate success!')
   } else {
+    console.log('\n')
     await new Promise((resolve, reject) => {
       Metalsmith(__dirname)
         .source(template) // 需要编译的资源
@@ -70,7 +76,7 @@ module.exports = async (projectName) => {
                 // 模板编译
                 content = await render(content, anwsers)
                 // 将编译的内容赋回去
-                files[file].conetents = Buffer.from(content)
+                files[file].contents = Buffer.from(content)
               }
             }
           })
@@ -80,6 +86,7 @@ module.exports = async (projectName) => {
           if (err) {
             reject()
           } else {
+            console.log('\ncreate success!')
             resolve()
           }
         })

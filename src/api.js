@@ -1,5 +1,6 @@
 const axios = require('axios')
 const { downloadGitRepo } = require('./utils')
+const { downloadDirectory } = require('./constents')
 
 // 获取仓库列表
 const fetchRepoList = async () => {
@@ -7,7 +8,8 @@ const fetchRepoList = async () => {
     const { data } = await axios.get('http://api.github.com/users/listentolife/repos')
     return data;
   } catch (e) {
-    console.log(e)
+    // console.log(e)
+    console.log('\nfetch fail')
     return []
   }
 }
@@ -18,7 +20,8 @@ const fetchTagList = async (repo) => {
     const { data } = await axios.get(`https://api.github.com/repos/listentolife/${repo}/tags`)
     return data
   } catch (e) {
-    console.log(e)
+    // console.log(e)
+    console.log('\nfetch fail')
     return []
   }
 }
