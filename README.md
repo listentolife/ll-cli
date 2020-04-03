@@ -28,4 +28,4 @@ $ ll-cli create my-project
 
 ## License
 
-[MIT](https://github.com/listentolife/ll-cli/LICENSE)
+[MIT](https://github.com/listentolife/ll-cli/blob/master/LICENSE)
