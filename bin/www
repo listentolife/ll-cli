@@ -1,0 +1,4 @@
+#! /usr/bin/env node
+
+// 找执行的核心文件
+require('../src/main.js')

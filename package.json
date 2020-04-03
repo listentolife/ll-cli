@@ -1,0 +1,34 @@
+{
+  "name": "@listentolife/ll-cli",
+  "version": "1.0.0",
+  "description": "a standard tool for init project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "ll-cli": "./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/listentolife/ll-cli.git"
+  },
+  "keywords": [],
+  "author": "listentolife",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/listentolife/ll-cli/issues"
+  },
+  "homepage": "https://github.com/listentolife/ll-cli#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "commander": "^5.0.0",
+    "consolidate": "^0.15.1",
+    "download-git-repo": "^3.0.2",
+    "ejs": "^3.0.2",
+    "inquirer": "^7.1.0",
+    "metalsmith": "^2.3.0",
+    "ncp": "^2.0.0",
+    "ora": "^4.0.3"
+  }
+}
